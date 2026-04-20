@@ -15,14 +15,15 @@ async function runAutomation() {
   // Initialize history (async)
   await history.init();
 
-  // Manual Test Mode
+  // Manual Test Mode - only trigger if SCRAPE_URL is a non-empty string
   const manualUrl = process.env.SCRAPE_URL;
-  if (manualUrl) {
+  if (manualUrl && manualUrl.trim() !== '' && manualUrl !== 'undefined') {
     console.log(`[Main] MANUAL MODE: Processing single URL: ${manualUrl}`);
     await processUrl(manualUrl, scraper, translator, uploader);
     console.log('=== Manual Processing Complete ===');
     return;
   }
+
 
   // 1. Discover all daily URLs from the home page
   const allUrls = await scraper.discoverDailyUrls();

@@ -6,7 +6,7 @@ export class Scraper {
   private static BASE_URL = 'https://www.indiabix.com';
 
   async scrapeCategory(path: string): Promise<ScrapedQuestion[]> {
-    const url = path.startsWith('http') ? path : `${Scraper.BASE_URL}${path}`;
+    const url = path.startsWith('http') ? path : `${Scraper.BASE_URL}${path.startsWith('/') ? '' : '/'}${path}`;
     console.log(`[Scraper] Fetching: ${url}`);
     
     try {
