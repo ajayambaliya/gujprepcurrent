@@ -7,7 +7,7 @@ dotenv.config();
 
 export class HistoryManager {
   private scrapedUrls: Set<string> = new Set();
-  private githubPat = process.env.GITHUB_PAT;
+  private githubPat = process.env.GH_PAT;
   private gistId = process.env.GIST_ID;
   private filename = 'scraped_urls_indiabix.json';
 
